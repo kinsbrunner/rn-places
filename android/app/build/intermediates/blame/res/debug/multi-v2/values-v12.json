@@ -4,16 +4,8 @@
             "outputFile": "C:\\Users\\user\\Desktop\\vagrant\\src\\rn-course\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v12\\values-v12.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\629ae7298bb46f30d9e2442a106ddcbb\\res\\values-v12\\values-v12.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\397810ba7e3999bfbf3b76f43f992744\\res\\values-v12\\values-v12.xml",
                     "from": {
-                        "startLines": "4,7,10,11",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "285,509,709,828",
-                        "endLines": "6,9,10,11",
-                        "endColumns": "12,12,118,94",
-                        "endOffsets": "504,704,823,918"
-                    },
-                    "to": {
                         "startLines": "2,5,8,9",
                         "startColumns": "4,4,4,4",
                         "startOffsets": "55,279,479,598",
