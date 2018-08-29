@@ -1,4 +1,4 @@
-#Mon Aug 20 09:51:16 ART 2018
+#Mon Aug 27 19:58:45 ART 2018
 base.0=C\:\\Users\\user\\Desktop\\vagrant\\src\\rn-course\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
