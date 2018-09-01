@@ -37,7 +37,9 @@ Navigation.registerComponent(
 );
 Navigation.registerComponent(
   "awesome-places.SideDrawer", 
-  () => SideDrawer
+  () => SideDrawer,
+  store,
+  Provider
 );
 
 // Start App

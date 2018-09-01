@@ -6,6 +6,7 @@
 # dependencies
 /node_modules
 /ios
+/android/.gradle
 .vscode
 .idea
 
