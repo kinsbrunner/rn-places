@@ -1,5 +1,11 @@
-import { SET_PLACES, REMOVE_PLACE } from './actionTypes';
+import { SET_PLACES, REMOVE_PLACE, PLACE_ADDED, START_ADD_PLACE } from './actionTypes';
 import { uiStartLoading, uiStopLoading, authGetToken } from './index';
+
+export const startAddPlace = () => {
+  return {
+    type: START_ADD_PLACE
+  };
+};
 
 export const addPlace = (placeName, location, image) => {
   return dispatch => {
@@ -15,7 +21,7 @@ export const addPlace = (placeName, location, image) => {
           method: "POST",
           body: JSON.stringify({
             image: image.base64
-          }), 
+          }),
           headers: {
             "Authorization": "Bearer " + authToken
           }
@@ -26,28 +32,48 @@ export const addPlace = (placeName, location, image) => {
         alert("Something went wrong, please try again!");
         dispatch(uiStopLoading());
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw (new Error());
+        }
+      })
       .then(parsedRes => {
         const placeData = {
           name: placeName,
           location: location,
-          image: parsedRes.imageUrl
+          image: parsedRes.imageUrl,
+          imagePath: parsedRes.imagePath 
         }
         return fetch("https://awesome-places-ae720.firebaseio.com/places.json?auth=" + authToken, {
           method: "POST",
           body: JSON.stringify(placeData)
         })
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw (new Error());
+        }
+      })
       .then(parsedRes => {
         console.log(parsedRes);
         dispatch(uiStopLoading());
+        dispatch(placeAdded());
       })
       .catch(err => {
         console.log(err);
         alert("Something went wrong, plese try again!");
         dispatch(uiStopLoading());
       }); // catches all 4xx and 5xx errors;
+  };
+};
+
+export const placeAdded = () => {
+  return {
+    type: PLACE_ADDED
   };
 };
 
@@ -60,7 +86,13 @@ export const getPlaces = () => {
       .catch(() => {
         alert("No valid token found");
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw(new Error());
+        }
+      })
       .then(parsedRes => {
         const places = [];
         for (let key in parsedRes) {
@@ -100,7 +132,13 @@ export const deletePlace = (key) => {
           method: "DELETE"
         });
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw(new Error());
+        }
+      })
       .then(parsedRes => {
         console.log("Done!");
       })
